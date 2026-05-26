@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <title>Inicio de sesión</title>
+</head>
+<body>
+
+    <div class="logo-box">
+        <img src="{{ url_for('static', filename='img/Renault.png') }}">
+    </div>
+
+    <form method="POST">
+
+        <div class="inf">
+            <input 
+                type="text"
+                name="usuario"
+                placeholder="Usuario"
+                required
+            >
+
+            <input 
+                type="password"
+                name="contraseña"
+                placeholder="Contraseña"
+                required
+            >
+        </div>
+
+        <div class="cole">
+            <select name="colegio" required>
+                <option value="" disabled selected hidden>
+                    Selecciona tu colegio
+                </option>
+                <option>ITR</option>
+                <option>IPET</option>
+                <option>Escuela 3</option>
+                <option>Escuela 4</option>
+            </select>
+        </div>
+
+        <button type="submit">
+            Entrar
+        </button>
+
+    </form>
+
+    {% if error %}
+        <p style="color:red; margin-top:15px;">
+            {{ error }}
+        </p>
+    {% endif %}
+
+</body>
+</html>

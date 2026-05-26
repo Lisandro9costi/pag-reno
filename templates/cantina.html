@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cantina.css') }}">
+    <title>Cantina</title>
+</head>
+<body>
+
+    <h1>CANTINA</h1>
+
+    <div class="contenedor-productos">
+
+        <!-- PRODUCTO -->
+        <div class="producto">
+
+            <!-- FOTO -->
+            <div class="foto">
+                <img src="{{ url_for('static', filename='img/hamburguesa.png') }}" alt="">
+            </div>
+
+            <!-- INFO -->
+            <div class="info">
+                <h2>Hamburguesa</h2>
+
+                <p class="precio">$3500</p>
+
+                <p class="aclaracion">
+                    Con papas fritas
+                </p>
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO -->
+        <div class="producto">
+
+            <div class="foto">
+                <img src="{{ url_for('static', filename='img/pizza.png') }}" alt="">
+            </div>
+
+            <div class="info">
+                <h2>Pizza</h2>
+
+                <p class="precio">$5200</p>
+
+                <p class="aclaracion">
+                    Muzzarella
+                </p>
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO -->
+        <div class="producto">
+
+            <div class="foto">
+                <img src="{{ url_for('static', filename='img/gaseosa.png') }}" alt="">
+            </div>
+
+            <div class="info">
+                <h2>Gaseosa</h2>
+
+                <p class="precio">$1800</p>
+
+                <p class="aclaracion">
+                    500ml
+                </p>
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO -->
+        <div class="producto">
+
+            <div class="foto">
+                <img src="{{ url_for('static', filename='img/panchos.png') }}" alt="">
+            </div>
+
+            <div class="info">
+                <h2>Panchos</h2>
+
+                <p class="precio">$2500</p>
+
+                <p class="aclaracion">
+                    Doble cheddar
+                </p>
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO -->
+        <div class="producto">
+
+            <div class="foto">
+                <img src="{{ url_for('static', filename='img/cafe.png') }}" alt="">
+            </div>
+
+            <div class="info">
+                <h2>Café</h2>
+
+                <p class="precio">$1200</p>
+
+                <p class="aclaracion">
+                    Con leche
+                </p>
+            </div>
+
+        </div>
+
+        <!-- PRODUCTO -->
+        <div class="producto">
+
+            <div class="foto">
+                <img src="{{ url_for('static', filename='img/tostado.png') }}" alt="">
+            </div>
+
+            <div class="info">
+                <h2>Tostado</h2>
+
+                <p class="precio">$2900</p>
+
+                <p class="aclaracion">
+                    Jamón y queso
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

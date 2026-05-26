@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicio.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Copa Renault</h1>
+    <img id="deporteSeleccionado" src="{{ url_for('static', filename='img/futbol.png') }}" alt="Deporte seleccionado">
+    
+    <div class="deportes">
+
+    <div class="deporte" onclick="cambiarDeporte(0)">
+        FÚTBOL
+    </div>
+
+    <div class="deporte" onclick="cambiarDeporte(1)">
+        VOLEY
+    </div>
+
+    <div class="deporte" onclick="cambiarDeporte(2)">
+        BÁSQUET
+    </div>
+
+</div>
+    <a href="{{ url_for('cantina') }}">CANTINA</a>
+    <a href="{{ url_for('sponsors') }}">SPONSORS</a>
+
+
+
+    <script>
+    const imagen = document.getElementById("deporteSeleccionado");
+
+    const deportes = [
+        "{{ url_for('static', filename='img/futbol.png') }}",
+        "{{ url_for('static', filename='img/voley.png') }}",
+        "{{ url_for('static', filename='img/basquet.png') }}"
+    ];
+
+    function cambiarDeporte(index){
+
+        // efecto fade
+        imagen.style.opacity = "0";
+
+        setTimeout(() => {
+            imagen.src = deportes[index];
+            imagen.style.opacity = "1";
+        }, 150);
+
+    }
+</script>
+</body>
+</html>

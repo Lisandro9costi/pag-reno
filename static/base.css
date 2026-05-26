@@ -1,0 +1,466 @@
+/* ==========================
+   RESET
+========================== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================
+   BODY
+========================== */
+body{
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    gap: 25px;
+
+    font-family: 'Segoe UI', Arial, sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #111111,
+        #1b1b1b,
+        #242424
+    );
+
+    overflow: hidden;
+}
+
+/* ==========================
+   ANIMACIÓN
+========================== */
+@keyframes aparecer{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================
+   CONTENEDOR LOGIN
+========================== */
+.inf{
+    width: 500px;
+    max-width: 90vw;
+
+    padding: 35px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #1f1f1f,
+        #292929
+    );
+
+    border: 1px solid rgba(255,123,0,.25);
+
+    border-radius: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+
+    backdrop-filter: blur(10px);
+
+    animation: aparecer .8s ease;
+}
+
+/* ==========================
+   INPUTS
+========================== */
+.inf input{
+    width: 100%;
+    height: 58px;
+
+    padding: 0 20px;
+
+    border-radius: 16px;
+    border: 2px solid #333;
+
+    background: #181818;
+
+    color: white;
+    font-size: 17px;
+    font-weight: 500;
+
+    outline: none;
+
+    transition:
+    border-color .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+/* Placeholder */
+.inf input::placeholder{
+    color: #8a8a8a;
+}
+
+/* Hover */
+.inf input:hover{
+    border-color: rgba(255,123,0,.35);
+}
+
+/* Focus */
+.inf input:focus{
+    border-color: #ff7b00;
+
+    background: #202020;
+
+    box-shadow:
+        0 0 0 4px rgba(255,123,0,.12);
+}
+
+/* ==========================
+   COLEGIO BOX
+========================== */
+.cole{
+    width: 500px;
+    max-width: 90vw;
+
+    padding: 25px 30px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #1f1f1f,
+        #292929
+    );
+
+    border: 1px solid rgba(255,123,0,.25);
+
+    border-radius: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+
+    animation: aparecer 1s ease;
+}
+
+/* Texto superior */
+.cole::before{
+    content: "Colegio";
+
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #ff7b00;
+
+    letter-spacing: .5px;
+}
+
+/* ==========================
+   SELECT
+========================== */
+.cole select{
+    width: 100%;
+    height: 58px;
+
+    padding: 0 18px;
+
+    border-radius: 16px;
+    border: 2px solid #333;
+
+    background: #181818;
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+    cursor: pointer;
+
+    transition:
+    border-color .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+}
+
+/* Hover */
+.cole select:hover{
+    border-color: rgba(255,123,0,.35);
+}
+
+/* Focus */
+.cole select:focus{
+    border-color: #ff7b00;
+
+    background: #202020;
+
+    box-shadow:
+        0 0 0 4px rgba(255,123,0,.12);
+}
+
+/* ==========================
+   BOTÓN
+========================== */
+button{
+    width: 500px;
+    max-width: 90vw;
+    height: 58px;
+
+    border: none;
+    border-radius: 18px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff7b00,
+        #ff9500
+    );
+
+    color: #111;
+
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
+
+    box-shadow:
+        0 8px 25px rgba(255,123,0,.25);
+
+    animation: aparecer 1.2s ease;
+}
+
+/* Hover */
+button:hover{
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(255,123,0,.35);
+
+    filter: brightness(1.05);
+}
+
+/* Click */
+button:active{
+    transform: scale(.98);
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media(max-width: 600px){
+
+    .inf,
+    .cole,
+    button{
+        width: 90vw;
+    }
+
+}
+
+body{
+    background:
+    linear-gradient(
+        135deg,
+        #070707 0%,
+        #101010 45%,
+        #161616 100%
+    );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 20px;
+
+    overflow: hidden;
+    position: relative;
+}
+
+/* Capas decorativas del fondo */
+body::before{
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+    linear-gradient(
+        120deg,
+        rgba(255,123,0,.18) 0%,
+        rgba(255,123,0,.18) 28%,
+        transparent 28%
+    ),
+
+    linear-gradient(
+        -120deg,
+        rgba(255,140,0,.14) 0%,
+        rgba(255,140,0,.14) 30%,
+        transparent 30%
+    ),
+
+    linear-gradient(
+        180deg,
+        transparent 35%,
+        rgba(255,170,70,.10) 50%,
+        transparent 65%
+    );
+
+    z-index: -2;
+}
+
+/* Oscurecedor elegante */
+body::after{
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.45)
+    );
+
+    z-index: -1;
+}
+
+/* ==========================
+   FONDO ESTILO DEPORTIVO
+========================== */
+
+/* Capa principal */
+body::before{
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+
+    /* BRILLO IZQUIERDA */
+    linear-gradient(
+        115deg,
+        transparent 18%,
+        rgba(255,120,0,.9) 20%,
+        rgba(255,120,0,.15) 21%,
+        transparent 38%
+    ),
+
+    /* BRILLO CENTRO */
+    linear-gradient(
+        115deg,
+        transparent 42%,
+        rgba(255,140,0,.55) 44%,
+        rgba(255,140,0,.08) 45%,
+        transparent 62%
+    ),
+
+    /* BRILLO DERECHA */
+    linear-gradient(
+        115deg,
+        transparent 72%,
+        rgba(255,120,0,.8) 74%,
+        rgba(255,120,0,.12) 75%,
+        transparent 90%
+    );
+
+    z-index: -4;
+}
+
+/* Difuminado naranja */
+body::after{
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+
+    radial-gradient(
+        circle at left center,
+        rgba(255,110,0,.35),
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at center,
+        rgba(255,120,0,.18),
+        transparent 28%
+    ),
+
+    radial-gradient(
+        circle at right center,
+        rgba(255,110,0,.30),
+        transparent 35%
+    );
+
+    filter: blur(70px);
+
+    z-index: -3;
+}
+
+/* ==========================
+   CUADRADO BLANCO LOGO
+========================== */
+.logo-box{
+    position: absolute;
+    top: 35px;
+
+    width: 135px;
+    height: 135px;
+
+    background: white;
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+        0 0 35px rgba(255,255,255,.28),
+        0 0 60px rgba(255,140,0,.18);
+
+    z-index: 10;
+}
+
+.logo-box img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+.inf{
+    margin-top: 110px;
+}
+
+.cole{
+    margin-top: 5px;
+}

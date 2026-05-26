@@ -1,0 +1,343 @@
+/* ==========================
+   RESET
+========================== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================
+   BODY
+========================== */
+body{
+    min-height: 100vh;
+
+    font-family: 'Segoe UI', Arial, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-x: hidden;
+
+    color: white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #070707 0%,
+        #101010 45%,
+        #181818 100%
+    );
+
+    position: relative;
+}
+
+/* ==========================
+   FONDO
+========================== */
+body::before{
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+
+    linear-gradient(
+        115deg,
+        transparent 15%,
+        rgba(255,120,0,.95) 17%,
+        rgba(255,120,0,.12) 18%,
+        transparent 34%
+    ),
+
+    linear-gradient(
+        115deg,
+        transparent 42%,
+        rgba(255,140,0,.45) 44%,
+        rgba(255,140,0,.06) 45%,
+        transparent 58%
+    ),
+
+    linear-gradient(
+        115deg,
+        transparent 73%,
+        rgba(255,120,0,.85) 75%,
+        rgba(255,120,0,.10) 76%,
+        transparent 90%
+    );
+
+    z-index: -4;
+}
+
+body::after{
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background:
+
+    radial-gradient(
+        circle at left center,
+        rgba(255,110,0,.22),
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at center,
+        rgba(255,130,0,.10),
+        transparent 25%
+    ),
+
+    radial-gradient(
+        circle at right center,
+        rgba(255,110,0,.18),
+        transparent 35%
+    );
+
+    filter: blur(75px);
+
+    transform: scale(1.08);
+
+    z-index: -3;
+}
+
+/* ==========================
+   TITULO
+========================== */
+h1{
+    margin-top: 30px;
+
+    font-size: 72px;
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    color: #ff7b00;
+
+    position: relative;
+
+    animation: aparecer .8s ease;
+}
+
+h1::after{
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    bottom: -12px;
+
+    width: 170px;
+    height: 4px;
+
+    border-radius: 10px;
+
+    background:
+    linear-gradient(
+        to right,
+        transparent,
+        #ff7b00,
+        transparent
+    );
+}
+
+/* ==========================
+   CONTENEDOR
+========================== */
+.contenedor-sponsors{
+    width: 95%;
+
+    margin-top: 70px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 35px;
+
+    padding-bottom: 80px;
+}
+
+/* ==========================
+   TARJETA
+========================== */
+.sponsor{
+    background:
+    linear-gradient(
+        145deg,
+        #202020,
+        #2b2b2b
+    );
+
+    border: 2px solid rgba(255,123,0,.25);
+
+    border-radius: 20px;
+
+    padding: 15px;
+
+    transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.35);
+
+    animation: aparecer 1s ease;
+}
+
+.sponsor:hover{
+    transform: translateY(-6px);
+
+    border-color: #ff7b00;
+
+    box-shadow:
+    0 12px 30px rgba(255,123,0,.18);
+}
+
+/* ==========================
+   PARTE SUPERIOR
+========================== */
+.superior{
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+/* ==========================
+   LOGO
+========================== */
+.logo{
+    width: 110px;
+    height: 110px;
+
+    background: #6f9caf;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+/* ==========================
+   INFO
+========================== */
+.info h2{
+    font-size: 24px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.info p{
+    font-size: 20px;
+    font-weight: 600;
+
+    color: #ececec;
+}
+
+/* ==========================
+   DESCRIPCION
+========================== */
+.descripcion{
+    margin-top: 18px;
+
+    width: 100%;
+    height: 75px;
+
+    background: #148ca8;
+
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    color: black;
+}
+
+/* ==========================
+   LINK ABAJO
+========================== */
+.seguir{
+    margin-bottom: 30px;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    color: #0a552e;
+
+    text-decoration: underline;
+
+    transition: .25s ease;
+}
+
+.seguir:hover{
+    color: #18a357;
+}
+
+/* ==========================
+   ANIMACION
+========================== */
+@keyframes aparecer{
+
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media(max-width: 1000px){
+
+    .contenedor-sponsors{
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width: 600px){
+
+    h1{
+        font-size: 48px;
+    }
+
+    .superior{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .descripcion{
+        font-size: 22px;
+    }
+
+}
