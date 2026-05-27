@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cantina.css') }}">
+    <title>Cantina</title>
+</head>
+<body>
+
+    <a class="back-btn" href="{{ url_for('inicio') }}">← Volver</a>
+
+    <h1>CANTINA</h1>
+
+    {% if user %}
+        <p class="welcome-text">Bienvenido, {{ user.nombre }}. Elige un producto para completar tu pedido.</p>
+        <a class="secondary-btn" href="{{ url_for('mis_pedidos') }}">Ver mis pedidos</a>
+    {% endif %}
+
+    <div class="contenedor-productos">
+
+        {% for p in productos %}
+        <a class="producto-link" href="{{ url_for('cantina_producto', product_id=p.id_producto) }}">
+            <div class="producto">
+
+                <div class="foto">
+                    <img src="{{ url_for('static', filename=p.imagen_url) if p.imagen_url else url_for('static', filename='img/hamburguesa.png') }}" alt="">
+                </div>
+
+                <div class="info">
+                    <h2>{{ p.nombre }}</h2>
+
+                    <p class="precio">${{ ('{:.0f}'.format(p.precio) if p.precio is not none else '0') }}</p>
+
+                    <p class="aclaracion">
+                        {{ p.descripcion }}
+                    </p>
+                </div>
+
+            </div>
+        </a>
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>

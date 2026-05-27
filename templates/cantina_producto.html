@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cantina.css') }}">
+    <title>Pedido - {{ producto.nombre }}</title>
+</head>
+<body>
+    <a class="back-btn" href="{{ url_for('cantina') }}">← Volver a la cantina</a>
+
+    <div class="pedido-contenedor">
+        <div class="producto-detalle">
+            <div class="foto">
+                <img src="{{ url_for('static', filename=producto.imagen_url) if producto.imagen_url else url_for('static', filename='img/hamburguesa.png') }}" alt="{{ producto.nombre }}">
+            </div>
+            <div class="detalle-info">
+                <h1>{{ producto.nombre }}</h1>
+                <p class="precio">Precio unitario: ${{ ('{:.2f}'.format(producto.precio) if producto.precio is not none else '0.00') }}</p>
+                <p class="aclaracion">{{ producto.descripcion }}</p>
+            </div>
+        </div>
+
+        <form class="pedido-form" method="POST">
+            <h2>Completa tu pedido</h2>
+
+            <label>
+                Nombre completo
+                <input type="text" name="nombre_contacto" value="{{ user.nombre if user else '' }}" placeholder="Nombre" required>
+            </label>
+
+            <label>
+                Email
+                <input type="email" name="email_contacto" value="{{ user.email if user else '' }}" placeholder="Email" required>
+            </label>
+
+            <label>
+                Teléfono
+                <input type="text" name="telefono_contacto" placeholder="Teléfono" required>
+            </label>
+
+            <label>
+                Dirección
+                <input type="text" name="direccion" placeholder="Dirección de entrega">
+            </label>
+
+            <label>
+                Cantidad
+                <input type="number" name="cantidad" min="1" value="1" required>
+            </label>
+
+            <label>
+                Notas adicionales
+                <textarea name="notas" placeholder="Ej. sin cebolla, para llevar, etc."></textarea>
+            </label>
+
+            <button type="submit">Calcular monto y enviar pedido</button>
+        </form>
+
+    </div>
+</body>
+</html>

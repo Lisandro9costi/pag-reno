@@ -20,6 +20,7 @@ body{
     align-items: center;
 
     overflow-x: hidden;
+    overflow-y: auto;
 
     color: white;
 
