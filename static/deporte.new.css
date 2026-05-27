@@ -1,0 +1,80 @@
+/* Modern responsive styles for deporte and equipo pages */
+
+:root{
+    --bg: #0f1720;
+    --card: #0b1220;
+    --muted: #98a0aa;
+    --accent: #ff7b00;
+    --accent-2: #ff9b3d;
+    --glass: rgba(255,255,255,0.04);
+    --glass-2: rgba(255,255,255,0.02);
+    --surface: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+
+/* Page container */
+main, .content{
+    width: min(1100px, 96%);
+    margin: 20px auto 60px;
+}
+
+/* Back button */
+.back-btn{ display:inline-flex; align-items:center; gap:.6rem; padding:.55rem .9rem; background:transparent; border:1px solid var(--glass); color:var(--accent); border-radius:10px; text-decoration:none; font-weight:600 }
+.back-btn:hover{ background:var(--glass); box-shadow: 0 6px 20px rgba(0,0,0,0.45) }
+
+/* Hero */
+.hero{ display:grid; grid-template-columns: 320px 1fr; gap:28px; align-items:center; background:var(--surface); padding:20px; border-radius:14px; box-shadow: 0 10px 40px rgba(2,6,23,0.6) }
+.hero img{ width:100%; height:auto; border-radius:10px; object-fit:cover; box-shadow: 0 18px 50px rgba(0,0,0,0.6) }
+.hero h1{ margin:0; color:var(--accent); font-size:2.2rem; letter-spacing:.6px }
+.hero p{ margin:8px 0 0; color:var(--muted); line-height:1.5 }
+
+/* Grid layout: left column hero, right column content */
+.sections{ display:grid; grid-template-columns: 1fr; gap:18px; margin-top:18px }
+
+/* Teams grid */
+.equipos{ display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:18px }
+.equipo{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:12px; border:1px solid var(--glass); transition: transform .18s ease, box-shadow .18s ease }
+.equipo:hover{ transform: translateY(-6px); box-shadow: 0 20px 50px rgba(2,6,23,0.6) }
+.equipo img{ width:100%; max-height:110px; object-fit:contain; display:block; margin-bottom:10px }
+.equipo h3{ margin:0 0 6px; color:#fff; font-size:1.05rem }
+.equipo p{ margin:0; color:var(--muted) }
+.equipo a{ color:inherit; display:block }
+
+/* Small metadata row */
+.meta-row{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; color:var(--muted); font-size:.95rem }
+
+/* Sections common */
+.card{ padding:16px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); border:1px solid var(--glass-2) }
+.card h2{ margin:0 0 10px; color:#fff }
+
+/* Players list */
+.jugadores .player{ display:flex; justify-content:space-between; padding:10px 8px; border-bottom:1px dashed rgba(255,255,255,0.03); color:#e6eef8 }
+.jugadores .player:last-child{ border-bottom:none }
+
+/* Arbitros */
+.arbitros ul{ list-style:none; padding:0; margin:0 }
+.arbitros li{ padding:8px 0; color:#e6eef8 }
+
+/* Reglamento */
+.reglamento ol{ padding-left:1.2rem; color:#dce7f5 }
+.reglamento li{ margin-bottom:10px }
+
+/* Partidos table - professional look */
+.partidos table{ width:100%; border-collapse:collapse; font-family:inherit }
+.partidos thead th{ text-align:left; padding:12px 14px; background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#08101a; font-weight:700; border-bottom:2px solid rgba(0,0,0,0.2) }
+.partidos tbody td{ padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.03); color:#e6eef8 }
+.partidos tbody tr:hover{ background: linear-gradient(90deg, rgba(255,123,0,0.03), rgba(255,123,0,0.015)) }
+.result-badge{ display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.03); color:#fff; font-weight:700 }
+
+/* Responsive rules */
+@media (max-width: 900px){
+    .hero{ grid-template-columns: 1fr; }
+    .hero img{ max-height:240px }
+    .meta-row{ justify-content:flex-start }
+}
+
+@media (max-width: 480px){
+    .hero h1{ font-size:1.6rem }
+    .partidos thead th{ display:none }
+    .partidos tbody td{ display:block; width:100% }
+    .partidos tbody tr{ display:block; margin-bottom:12px; border-radius:8px; background:var(--card); padding:10px }
+}

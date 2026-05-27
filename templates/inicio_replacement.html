@@ -13,21 +13,14 @@
     </div>
     {% endif %}
     <h1>Copa Renault</h1>
-    <img id="deporteSeleccionado" src="{{ url_for('static', filename='img/futbol.png') }}" alt="Deporte seleccionado">
+    <img id="deporteSeleccionado" src="{{ url_for('static', filename=deportes[0].imagen) if deportes else url_for('static', filename='img/futbol.png') }}" alt="Deporte seleccionado">
     
     <div class="deportes">
-
-    <div class="deporte" onclick="cambiarDeporte(0)">
-        FÚTBOL
+    {% for d in deportes %}
+    <div class="deporte" onclick="cambiarDeporte({{ loop.index0 }})">
+        {{ d.nombre }}
     </div>
-
-    <div class="deporte" onclick="cambiarDeporte(1)">
-        VOLEY
-    </div>
-
-    <div class="deporte" onclick="cambiarDeporte(2)">
-        BÁSQUET
-    </div>
+    {% endfor %}
 
 </div>
     <a href="{{ url_for('cantina') }}">CANTINA</a>
@@ -35,13 +28,14 @@
 
 
 
+
     <script>
     const imagen = document.getElementById("deporteSeleccionado");
 
     const deportes = [
-        "{{ url_for('static', filename='img/futbol.png') }}",
-        "{{ url_for('static', filename='img/voley.png') }}",
-        "{{ url_for('static', filename='img/basquet.png') }}"
+    {% for d in deportes %}
+        "{{ url_for('static', filename=d.imagen) }}"{{ ",\n" if not loop.last else "" }}
+    {% endfor %}
     ];
 
     function cambiarDeporte(index){

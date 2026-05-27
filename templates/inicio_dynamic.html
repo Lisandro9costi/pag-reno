@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='inicio.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    {% if submitted %}
+    <div style="background:#d4ffd4;padding:12px;border:1px solid #7ad07a;margin-bottom:12px;">
+        Gracias — tu cuestionario se ha enviado correctamente.
+    </div>
+    {% endif %}
+    <a class="back-btn" href="{{ url_for('login') }}">← Volver</a>
+
+    <h1>Copa Renault</h1>
+
+    <div style="display:flex;gap:12px;align-items:flex-start;justify-content:center;margin-bottom:18px;">
+        {% for d in deportes[:3] %}
+        <div style="text-align:center; width:30%;">
+            <img src="{{ url_for('static', filename=d.imagen) }}" alt="{{ d.nombre }}" style="width:100%; height:auto; border-radius:8px;">
+            <h3 style="margin:8px 0 4px;">{{ d.nombre }}</h3>
+            <p style="font-size:0.9rem; color:#666;">{{ d.descripcion }}</p>
+            <a href="{{ url_for('deporte_page', deporte_id=d.id) }}" style="position:static;display:inline-block;margin-top:8px;padding:8px 12px;background:#0077cc;color:#fff;border-radius:6px;text-decoration:none;">Ver {{ d.nombre }}</a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div style="text-align:center;margin-bottom:12px;">
+        <a href="{{ url_for('cantina') }}">CANTINA</a> |
+        <a href="{{ url_for('sponsors') }}">SPONSORS</a>
+    </div>
+
+
+
+
+    <script>
+    const imagen = document.getElementById("deporteSeleccionado");
+
+    const deportes = [
+    {% for d in deportes %}
+        "{{ url_for('static', filename=d.imagen) }}"{{ ",\n" if not loop.last else "" }}
+    {% endfor %}
+    ];
+
+    function cambiarDeporte(index){
+
+        // efecto fade
+        imagen.style.opacity = "0";
+
+        setTimeout(() => {
+            imagen.src = deportes[index];
+            imagen.style.opacity = "1";
+        }, 150);
+
+    }
+</script>
+</body>
+</html>

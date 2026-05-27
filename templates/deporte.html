@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='deporte.css') }}">
+    <title>{{ deporte.nombre }}</title>
+</head>
+<body>
+
+    <a class="back-btn" href="{{ url_for('inicio') }}">← Volver</a>
+
+    <div class="hero">
+        <img src="{{ url_for('static', filename=imagen) }}" alt="{{ deporte.nombre }}">
+        <div>
+            <h1>{{ deporte.nombre }}</h1>
+            <p>{{ deporte.descripcion }}</p>
+        </div>
+    </div>
+
+    <section>
+        <h2>Equipos</h2>
+        <div class="equipos">
+            {% for e in equipos %}
+            <div class="equipo">
+                <a href="{{ url_for('equipo_page', equipo_id=e.id_equipo) }}" style="text-decoration:none;color:inherit;">
+                <div style="height:80px;text-align:center;">
+                    <img src="{{ url_for('static', filename=e.logo_url) if e.logo_url else url_for('static', filename='img/logo1.png') }}" alt="{{ e.nombre }}" style="max-height:70px;">
+                </div>
+                <h3>{{ e.nombre }}</h3>
+                <p style="font-size:0.85rem;color:#666;">{{ e.ciudad or '' }}</p>
+                </a>
+            </div>
+            {% else %}
+            <p>No hay equipos registrados para este deporte.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="jugadores">
+        <h2>Jugadores</h2>
+        {% if jugadores %}
+            {% for j in jugadores %}
+                <div class="jugador">{{ j.nombre }} — #{{ j.numero_camiseta or '-' }} — {{ j.posicion or '' }}</div>
+            {% endfor %}
+        {% else %}
+            <p>No hay jugadores registrados para este deporte.</p>
+        {% endif %}
+    </section>
+
+    <section class="arbitros">
+        <h2>Árbitros</h2>
+        {% if arbitros %}
+            <ul>
+            {% for a in arbitros %}
+                <li>{{ a.nombre }}{% if a.email %} — {{ a.email }}{% endif %}{% if a.telefono %} — {{ a.telefono }}{% endif %}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No hay árbitros registrados para este deporte.</p>
+        {% endif %}
+    </section>
+
+    <section class="reglamento">
+        <h2>Reglamento</h2>
+        {% if reglamentos %}
+            <ol>
+            {% for r in reglamentos %}
+                <li><strong>{{ r.titulo }}</strong><div style="font-size:0.95rem;color:#444;">{{ r.contenido }}</div></li>
+            {% endfor %}
+            </ol>
+        {% else %}
+            <p>No hay reglamento cargado para este deporte.</p>
+        {% endif %}
+    </section>
+
+    <section class="partidos">
+        <h2>Partidos</h2>
+        {% if partidos %}
+            <table style="width:100%;border-collapse:collapse;">
+                <thead>
+                    <tr style="text-align:left;">
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Local</th>
+                        <th>Visitante</th>
+                        <th>Arbitro</th>
+                        <th>Estado</th>
+                        <th>Resultado</th>
+                        <th>Ubicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for p in partidos %}
+                    <tr style="border-top:1px solid #eee;">
+                        <td>{{ p.fecha }}</td>
+                        <td>{{ p.hora }}</td>
+                        <td>{{ p.local }}</td>
+                        <td>{{ p.visitante }}</td>
+                        <td>{{ p.arbitro or '-' }}</td>
+                        <td>{{ p.estado }}</td>
+                        <td>{{ p.resultado_local }} - {{ p.resultado_visitante }}</td>
+                        <td>{{ p.ubicacion or '' }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay partidos programados para este deporte.</p>
+        {% endif %}
+    </section>
+
+</body>
+</html>

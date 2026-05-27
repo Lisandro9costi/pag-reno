@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <title>{{ equipo.nombre }}</title>
+    <style>
+        .team-hero{ display:flex; gap:16px; align-items:center; margin:18px 0; }
+        .team-hero img{ width:160px; height:auto; border-radius:8px; }
+        .players{ margin-top:16px; }
+        .player{ padding:8px 0; border-bottom:1px solid rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+
+    <a class="back-btn" href="{{ url_for('deporte_page', deporte_id=deporte_id) }}">← Volver</a>
+
+    <div class="team-hero">
+        <img src="{{ url_for('static', filename=equipo.logo_url) if equipo.logo_url else url_for('static', filename='img/logo1.png') }}" alt="{{ equipo.nombre }}">
+        <div>
+            <h1>{{ equipo.nombre }}</h1>
+            <p>{{ equipo.ciudad }}</p>
+        </div>
+    </div>
+
+    <section>
+        <h2>Jugadores</h2>
+        <div class="players">
+            {% if jugadores %}
+                {% for j in jugadores %}
+                    <div class="player">{{ j.nombre }} — #{{ j.numero_camiseta or '-' }} — {{ j.posicion or '' }}</div>
+                {% endfor %}
+            {% else %}
+                <p>No hay jugadores registrados para este equipo.</p>
+            {% endif %}
+        </div>
+    </section>
+
+</body>
+</html>
